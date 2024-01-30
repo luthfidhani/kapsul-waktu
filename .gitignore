@@ -1,0 +1,9 @@
+.env
+.DS_Store
+env/
+logs/
+__pycache__
+*egg-info/
+*-sa.json
+.vscode/
+tmp/

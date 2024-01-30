@@ -1,0 +1,48 @@
+{% include 'header.html' %}
+    <h1 class="mb-4 text-center">Pesan</h1>
+
+    {% if data.status == true %}
+        <div class="alert alert-success shadow-lg p-3 my-5 rounded">
+            <div class="m-3">
+                <center>
+                    <!-- Button trigger modal -->
+                    <h3 data-bs-toggle="modal" data-bs-target="#messageModal">
+                        <a href="#" class="text-decoration-none">Buka Pesan</a>
+                    </h3>
+
+                    <p class="my-4"><strong>Bisa dibuka pada :</strong> {{ data.date }}</p>
+                    <!-- Tombol Kembali ke Index -->
+                    <a href="{{ url_for('urls.index') }}" class="btn btn-primary">Kembali ke Home</a>
+                </center>
+            </div>
+        </div>
+    {% else %}
+        <!-- jika data.status == false -->
+        <div class="alert alert-warning shadow-lg p-3 my-5 rounded">
+            <div class="m-3">
+                <center>
+                    <h3>Pesan belum bisa dibuka</h3>
+
+                    <p class="my-4"><strong>Bisa dibuka pada :</strong> {{ data.date }}</p>
+                    <!-- Tombol Kembali ke Index -->
+                    <a href="{{ url_for('urls.index') }}" class="btn btn-primary">Kembali ke Home</a>
+                </center>
+            </div>
+        </div>
+    {% endif %}
+    
+    <!-- Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="messageModalLabel">Pesan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{ data.message }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'footer.html' %}
